@@ -51,7 +51,7 @@ export class NgDropFilesDirective {
     // console.log(fileList);
     // Method to convert an object to Array.
     // tslint:disable-next-line:forin
-    for (const property in Object.getOwnPropertyNames(fileList) {
+    for (const property in Object.getOwnPropertyNames(fileList)) {
 
       const temporalFile = fileList[property];
 

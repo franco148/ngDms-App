@@ -23,6 +23,10 @@ export class LoadComponent implements OnInit {
     this._loadImgService.loadFirebaseImages(this.files);
   }
 
+  clearFiles() {
+    this.files = [];
+  }
+
   // testOverElement(event) {
   //   console.log(event);
   // }
