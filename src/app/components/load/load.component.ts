@@ -10,6 +10,7 @@ import { LoadImagesService } from '../../services/load-images.service';
 export class LoadComponent implements OnInit {
 
   files: FileItem[] = [];
+  isOverDropZone = false;
 
   constructor(public _loadImgService: LoadImagesService) {
 
@@ -21,5 +22,9 @@ export class LoadComponent implements OnInit {
   loadImages() {
     this._loadImgService.loadFirebaseImages(this.files);
   }
+
+  // testOverElement(event) {
+  //   console.log(event);
+  // }
 
 }

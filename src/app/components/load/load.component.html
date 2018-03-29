@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-md-4">
         <h3>Select Files</h3>
-        <div class="wll drop-zone">
+        <div appNgDropFiles (mouseOver)="isOverDropZone = $event" [ngClass]="{ 'file-over': isOverDropZone }" class="well drop-zone">
+
             <h4>Drag your files here...</h4>
             <img src="assets/drop-images.png">
         </div>
