@@ -18,11 +18,50 @@ export class NgDropFilesDirective {
   @HostListener('dragover', ['$event'])
   public onDragEnter(event: any) {
     this.mouseOver.emit(true);
+    this._preventOpenFile(event);
   }
 
   @HostListener('dragleave', ['$event'])
   public onDragLeave(event: any) {
     this.mouseOver.emit(false);
+  }
+
+  @HostListener('drop', ['$event'])
+  public onDrop(event: any) {
+
+    const transfer = this._getTranference(event);
+
+    if (!transfer) {
+      return;
+    }
+
+    this._extractFiles(transfer.files);
+    this._preventOpenFile(event);
+
+    this.mouseOver.emit(false);
+  }
+
+  // This becuase each browser understands in a different way drag and drop event.
+  private _getTranference(event: any) {
+    return event.dataTransfer ? event.dataTransfer : event.originalEvent.dataTransfer;
+  }
+
+  private _extractFiles(fileList: FileList) {
+
+    // console.log(fileList);
+    // Method to convert an object to Array.
+    // tslint:disable-next-line:forin
+    for (const property in Object.getOwnPropertyNames(fileList) {
+
+      const temporalFile = fileList[property];
+
+      if (this._fileCanBeUploaded(temporalFile)) {
+
+        const newFile = new FileItem(temporalFile);
+        this.files.push(newFile);
+      }
+    }
+    console.log(this.files);
   }
 
   // Validations
